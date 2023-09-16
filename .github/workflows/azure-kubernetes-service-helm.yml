@@ -121,6 +121,19 @@ jobs:
         uses: Azure/k8s-deploy@v4
         with:
           action: deploy
+
+
+      - name: commom deployment
+        uses: azure/k8s-bake@v2
+        with:
+          renderEngine: "helm"
+          helmChart: ${{ env.CHART_PATH }}
+          overrideFiles: ${{ env.CHART_OVERRIDE_PATH }}
+          overrides: |
+            replicas:2
+          helm-version: "latest"
+        id: bake
+
           manifests: ${{ steps.bake.outputs.manifestsBundle }}
           images: |
             ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
