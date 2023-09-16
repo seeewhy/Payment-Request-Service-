@@ -7,8 +7,8 @@ metadata:
 spec:
   ports:
   - name: http
-    port: 80
-    targetPort: 80
+    port: 8080
+    targetPort: 8080
   selector:
     app: payment-request
 ---
@@ -35,7 +35,7 @@ spec:
     spec:
       containers:
       - name: payment-request
-        image: 863852973330.dkr.ecr.eu-west-2.amazonaws.com/payment-request:imgtag
+        image: 86313073330.dkr.ecr.eu-west-2.amazonaws.com/payment-request:imgtag
         resources:
           requests:
             memory: "200Mi"
@@ -45,7 +45,7 @@ spec:
             cpu: "300m"
         envFrom:
         - configMapRef:
-            name: common-services-config
+            name: payment-services-config
         ports: 
         - name: http
           containerPort: 80
@@ -63,8 +63,7 @@ spec:
               - key: node.kubernetes.io/description
                 operator: In
                 values:
-                - cfgprofile
-                - wayabank-cfgprofile 
+                - vnbase-cfgprofile
       volumes:
         - name: config-file
           secret:
