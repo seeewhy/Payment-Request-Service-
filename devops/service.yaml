@@ -1,4 +1,4 @@
-apiVersion: v
+apiVersion: v1
 kind: Service
 metadata:
   name: payment-request
@@ -6,13 +6,13 @@ metadata:
     app: payment-request
 spec:
   ports:
-  - name: htt
+  - name: http
     port: 8080
     targetPort: 8080
   selector:
     app: payment-request
 ---
-apiVersion: apps/v
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: payment-request
