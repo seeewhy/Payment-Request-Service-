@@ -4,7 +4,7 @@ plugins {
 	id 'java'
 	id "jacoco"
 	id "org.sonarqube" version "2.7"
-	id 'org.barfuin.gradle.jacocolog' version '1.2.3'
+	id 'org.barfuin.gradle.jacocolog' version '1.2.3' 
 }
 
 group = 'com.wayapaychat.payment.request.service'
